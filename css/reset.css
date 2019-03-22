@@ -154,3 +154,11 @@ input[type="number"]::-webkit-inner-spin-button {
     }
 
 }
+
+.fwb {
+    font-weight: bold;
+}
+
+.pl-0 {
+    padding-left: 0!important;
+}

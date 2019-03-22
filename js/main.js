@@ -8,12 +8,14 @@ $(function () {
     // $('.nav-menu li').mouseover(function () {
     //     $(this).css('color', '#0060CF');
     // });
+    var para = document.location.href.split("?"); console.log(para[1]);
 
     $(".nav-menu .btn-on").click(function () {
         var id = $(this).attr('id');
         // 최초 메뉴 클릭 시 메뉴가 열리고 그 후 부터는 화면 안에 내용이 전환 된다.
         if (menuSwitch == false) {
             menuSwitch = true;
+            $('.main-title').stop().animate({opacity: 0}, 1000);
             // 헤더 부분의 스타일이 변경 되며, 모바일에서는 다르게 작동한다.
             $('.nav-menu .btn-on, .nav-menu .btn-on a, .nav-menu .lang li a, #current-lang, #lang-list li').stop().animate({color: '#000'}, 1500, function () {
                 $('#lang-list').css("border", "1px solid #000");
@@ -24,6 +26,7 @@ $(function () {
                 if (window.innerWidth < 1178) {
                     $('.header').css('background', '#fff');
                 }
+
             });
             $('#main-page-circle').css('display', 'none');
             $('#' + id + '-circle').css('display', 'flex');
@@ -116,6 +119,24 @@ $(function () {
     //    $('.content-section').css('display', 'none');
     //    $('#about-content').fadeIn();
     // });
+
+    $('.diz-more').click(function () {
+        $('.business-main').css('display', 'none');
+        $('.business-atomic').css('display', 'none');
+        $('.business-diz').fadeIn();
+    });
+
+    $('.atomic-more').click(function () {
+        $('.business-main').css('display', 'none');
+        $('.business-diz').css('display', 'none');
+        $('.business-atomic').fadeIn();
+    });
+
+    $('#white-page').click(function () {
+        $('.business-atomic').css('display', 'none');
+        $('.business-diz').css('display', 'none');
+        $('.business-main').fadeIn();
+    });
 });
 
 $(function () {
@@ -138,4 +159,32 @@ $(function () {
     $(window).resize(function () {
         autoFont();
     });
+
+    history.pushState(null, null, location.href);
+
+    window.onpopstate = function(event) {
+        if ($('#white-page-content').css('display') == 'block' && ($('.business-diz').css('display') == 'block' || $('.business-atomic').css('display') == 'block')) {
+            $('.business-atomic').css('display', 'none');
+            $('.business-diz').css('display', 'none');
+            $('.business-main').fadeIn();
+            $('html, body').stop().animate({scrollTop: 0}, 400);
+            $('.color').css('color', '#0072F7');
+            $('.color-line').css('background', '#0072F7');
+            $('.content-section').css('display', 'none');
+            $('.circle').css('display', 'none');
+            $('#white-page-circle').css('display', 'flex');
+            $('#white-page-content').css('display', 'block');
+            $('#white-page-content .ani').addClass('animated fadeInUp');
+            if (window.innerWidth < 1178) {
+                $('.nav-menu').slideUp();
+                $('.header').css('background', '#fff');
+                $('.menu-bar').css('color', '#000');
+                $('#white-logo').addClass('dis-none');
+                $('#black-logo').removeClass('dis-none');
+                $('#menu-on').removeClass('dis-none');
+                $('#menu-off').addClass('dis-none');
+            }
+            history.go(1);
+        }
+    }
 });
