@@ -43,7 +43,7 @@ $(function () {
             }
         } else {
             // 이미 화면이 띄워져 있다면 안에 있던 컨텐츠만 변경 되며, 이 때도 data-target의 컬러값을 따라간다.
-            $('html, body').animate({scrollTop: 0}, 400);
+            $('html, body').stop().animate({scrollTop: 0}, 400);
             $('.color').css('color', $(this).attr('data-target'));
             $('.color-line').css('background', $(this).attr('data-target'));
             $('.content-section').css('display', 'none');
@@ -120,23 +120,37 @@ $(function () {
     //    $('#about-content').fadeIn();
     // });
 
-    $('.diz-more').click(function () {
-        $('.business-main').css('display', 'none');
-        $('.business-atomic').css('display', 'none');
-        $('.business-diz').fadeIn();
+    // $('.diz-more').click(function () {
+    //     $('.business-main').css('display', 'none');
+    //     $('.business-atomic').css('display', 'none');
+    //     $('.business-diz').fadeIn();
+    // });
+    //
+    // $('.atomic-more').click(function () {
+    //     $('.business-main').css('display', 'none');
+    //     $('.business-diz').css('display', 'none');
+    //     $('.business-atomic').fadeIn();
+    // });
+    //
+    // $('#white-page').click(function () {
+    //     $('.business-atomic').css('display', 'none');
+    //     $('.business-diz').css('display', 'none');
+    //     $('.business-main').fadeIn();
+    // });
+
+    $(".news").click(function () {
+        $('.news-list').css('display', 'none');
+        $('.news-content').fadeIn();
     });
 
-    $('.atomic-more').click(function () {
-        $('.business-main').css('display', 'none');
-        $('.business-diz').css('display', 'none');
-        $('.business-atomic').fadeIn();
+    $('.news-list-btn').click(function () {
+        $('.news-content').css('display', 'none');
+        $('.news-list').fadeIn();
     });
 
-    $('#white-page').click(function () {
-        $('.business-atomic').css('display', 'none');
-        $('.business-diz').css('display', 'none');
-        $('.business-main').fadeIn();
-    });
+    $('.btn-on').click(function () {
+        window.location.href = '#';
+    })
 });
 
 $(function () {
@@ -163,18 +177,41 @@ $(function () {
     history.pushState(null, null, location.href);
 
     window.onpopstate = function(event) {
-        if ($('#white-page-content').css('display') == 'block' && ($('.business-diz').css('display') == 'block' || $('.business-atomic').css('display') == 'block')) {
-            $('.business-atomic').css('display', 'none');
-            $('.business-diz').css('display', 'none');
-            $('.business-main').fadeIn();
+        // if ($('#white-page-content').css('display') == 'block' && ($('.business-diz').css('display') == 'block' || $('.business-atomic').css('display') == 'block')) {
+        //     $('.business-atomic').css('display', 'none');
+        //     $('.business-diz').css('display', 'none');
+        //     $('.business-main').fadeIn();
+        //     $('html, body').stop().animate({scrollTop: 0}, 400);
+        //     $('.color').css('color', '#0072F7');
+        //     $('.color-line').css('background', '#0072F7');
+        //     $('.content-section').css('display', 'none');
+        //     $('.circle').css('display', 'none');
+        //     $('#white-page-circle').css('display', 'flex');
+        //     $('#white-page-content').css('display', 'block');
+        //     $('#white-page-content .ani').addClass('animated fadeInUp');
+        //     if (window.innerWidth < 1178) {
+        //         $('.nav-menu').slideUp();
+        //         $('.header').css('background', '#fff');
+        //         $('.menu-bar').css('color', '#000');
+        //         $('#white-logo').addClass('dis-none');
+        //         $('#black-logo').removeClass('dis-none');
+        //         $('#menu-on').removeClass('dis-none');
+        //         $('#menu-off').addClass('dis-none');
+        //     }
+        //     history.go(1);
+        // }
+
+        if ($('#news-page-content').css('display') == 'block' && $('.news-content').css('display') == 'block') {
+            $('.news-content').css('display', 'none');
+            $('.news-list').fadeIn();
             $('html, body').stop().animate({scrollTop: 0}, 400);
             $('.color').css('color', '#0072F7');
             $('.color-line').css('background', '#0072F7');
             $('.content-section').css('display', 'none');
             $('.circle').css('display', 'none');
-            $('#white-page-circle').css('display', 'flex');
-            $('#white-page-content').css('display', 'block');
-            $('#white-page-content .ani').addClass('animated fadeInUp');
+            $('#news-page-content').css('display', 'flex');
+            $('#news-page-content').css('display', 'block');
+            $('#news-page-content .ani').addClass('animated fadeInUp');
             if (window.innerWidth < 1178) {
                 $('.nav-menu').slideUp();
                 $('.header').css('background', '#fff');

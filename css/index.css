@@ -61,7 +61,7 @@
     float: left;
     width: 260px;
     margin-top: 28px;
-    margin-left: 50px;
+    margin-left: 20px;
     z-index: 99;
 }
 
@@ -822,6 +822,14 @@
     margin-bottom: 7px;
     padding-left: 40px;
     line-height: 1.8;
+}
+
+.news-content-text {
+    margin-top: 20px;
+    color: #777;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: normal;
 }
 
 @media (max-width: 768px) {
