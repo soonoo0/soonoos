@@ -212,6 +212,9 @@ $(function () {
             $('#news-page-content').css('display', 'flex');
             $('#news-page-content').css('display', 'block');
             $('#news-page-content .ani').addClass('animated fadeInUp');
+            $('#news-page-circle').css('display', 'flex');
+            $('#news-page-circle').css('display', 'block');
+            $('#news-page-circle').addClass('animated fadeInUp');
             if (window.innerWidth < 1178) {
                 $('.nav-menu').slideUp();
                 $('.header').css('background', '#fff');
